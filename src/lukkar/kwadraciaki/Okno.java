@@ -30,6 +30,8 @@ class Okno extends JFrame {
         this.rysowanie = new JPanel();
         this.wzor = new JPanel();
         this.menu = new JPanel();
+        this.rysowanie.setBackground(new Color(128,128,128));
+        this.wzor.setBackground(new Color(128,128,128));
         this.rysowanie.setLocation((int)xprzerwa, (int)yprzerwa);
         this.wzor.setLocation((int)(dlrys+2*xprzerwa), (int)yprzerwa);
         this.menu.setLocation((int)(dlrys+2*xprzerwa), (int)(yprzerwa+dlrys*skalawzoru+przerwawzormenu));
@@ -38,6 +40,8 @@ class Okno extends JFrame {
         this.menu.setSize((int)(x-dlrys-3*xprzerwa), (int)(y-dlrys*skalawzoru-2*yprzerwa-przerwawzormenu));
         this.infoPoziomu = new JLabel();
         this.infoGry = new JTextArea();
+        this.infoPoziomu.setBackground(new Color(128,128,128));
+        this.infoGry.setBackground(new Color(128,128,128));
         this.infoPoziomu.setLocation(0,0);
         this.infoGry.setLocation(0,30);
         this.infoPoziomu.setSize((int)(x-dlrys-3*xprzerwa),30);
