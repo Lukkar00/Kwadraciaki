@@ -3,7 +3,7 @@ package lukkar.kwadraciaki;
  * Klasa zawierajaca tablice z przygotowanymi wzorcami poziomow
  * @author Lukasz Syposz
  */
-class Poziomy {
+public class Poziomy {
     /** Stworzenie tablicy z wzorcem do poziomu 1*/
     private int poziom1[][] = {
             {0,1,0},

@@ -6,10 +6,10 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import java.time.LocalTime;
 /**
- * Okno głowne gry
+ * Okno glowne gry
  * @author Lukasz Syposz
  */
-class Okno extends JFrame {
+public class Okno extends JFrame {
     /** Panel w ktorym uzytkownik rysuje obrazek*/
     JPanel rysowanie;
     /** Panel w ktorym wyswietla się wzor obrazka*/
@@ -21,7 +21,7 @@ class Okno extends JFrame {
     /** Informacja o grze wraz z instrukcja*/
     JTextArea infoGry;
     /** Manager do zarzadzania poziomami*/
-    ZarzadzaniePoziomami manager;
+     ZarzadzaniePoziomami manager;
     /** Szerokosc jednego kwadratu*/
     int kwadrat;
     /** Maksymalna liczba kwadratow w pionie i poziomie*/
@@ -80,7 +80,7 @@ class Okno extends JFrame {
         this.wzor.setSize((int)(dlrys*skalawzoru), (int)(dlrys*skalawzoru));
         this.menu.setSize((int)(dlrys*skalawzoru), (int)(dlrys*skalawzoru-przerwawzormenu));
         this.infoPoziomu = new JLabel("Nr poziomu: 1");
-        this.infoGry = new JTextArea("Gra zawiera 10 poziomĂłw. Po przejĹ›ciu poziomu automatycznie przechodzi do nastÄ™pnego. Gdy ostatni poziom zostanie zakoĹ„czony gra zamyka siÄ™. Celem jest dopasowanie elementĂłw na polu z lewej do miniatury z prawej.");
+        this.infoGry = new JTextArea("Gra zawiera 10 poziomow. Po uruchomieniu gry wlacza sie automatycznie poziom 1 i rozpoczyna sie liczenie czasu. Po przejsciu poziomu automatycznie przechodzi do nastepnego. Gdy ostatni poziom zostanie zakonczony gra zamyka sie i wyswietla sie czas. Celem jest dopasowanie elementow na polu z lewej strony do miniatury z prawej strony.");
         this.infoPoziomu.setLocation(0,0);
         this.infoGry.setLocation(0,30);
         this.menu.setBackground(new Color(140,140,140));

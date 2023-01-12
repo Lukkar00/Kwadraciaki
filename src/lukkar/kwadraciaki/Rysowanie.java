@@ -10,7 +10,7 @@ import java.lang.String;
  * Klasa rysujaca obrazek przez gracza
  * @author Lukasz Syposz
  */
-class Rysowanie extends JPanel {
+public class Rysowanie extends JPanel {
     Okno okno;
 
     /**

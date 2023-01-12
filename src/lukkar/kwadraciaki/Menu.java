@@ -11,7 +11,7 @@ import static java.time.temporal.ChronoUnit.SECONDS;
  * Klasa Menu
  * @author Lukasz Syposz
  */
-class Menu extends JPanel {
+public class Menu extends JPanel {
     /**
      * Przycisk do zakanczania gry
      */

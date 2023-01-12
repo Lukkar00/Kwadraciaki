@@ -3,13 +3,26 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
-import java.awt.BasicStroke;
-class Wzor extends JPanel {
+/**
+ * Klasa rysujaca wzor
+ * @author Lukasz Syposz
+ */
+public class Wzor extends JPanel {
     Okno okno;
+
+    /**
+     * Przeslanie parametrow z klasy dziedziczacej
+     * @param okno
+     */
     Wzor(Okno okno){
         super();
         this.okno = okno;
     }
+
+    /**
+     * Metoda odpowiadająca za rysowanie elementów w obszarze ze wzorem
+     * @param g  the <code>Graphics</code> context in which to paint
+     */
     public void paint(Graphics g) {
         super.paintComponents(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -17,7 +30,7 @@ class Wzor extends JPanel {
         g2.fillRect(0, 0, (int)(this.okno.dlrys*this.okno.skalawzoru), (int)(this.okno.dlrys*this.okno.skalawzoru));
         for (int i = 0; i<this.okno.manager.poziomDocelowy.length; i++) {
             for (int j = 0; j<this.okno.manager.poziomDocelowy.length; j++) {
-                if (this.okno.manager.poziomDocelowy[i][j] == 1) {   
+                if (this.okno.manager.poziomDocelowy[i][j] == 1) {
                     g2.setColor(new Color(255,0,0));
                 } else {
                     g2.setColor(new Color(0,255,0));

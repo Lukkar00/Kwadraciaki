@@ -1,8 +1,16 @@
 package lukkar.kwadraciaki;
+
+/**
+ * Glowna klasa uruchamiajaca gre
+ * @author Lukasz Syposz
+ */
 public class Main {
-    public static int cos[][];
+    /**
+     * Metoda uruchamiajaca gre
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
         Okno okno = new Okno();
     }
 }

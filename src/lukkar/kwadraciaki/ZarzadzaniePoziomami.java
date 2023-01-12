@@ -6,7 +6,7 @@ import static java.time.temporal.ChronoUnit.SECONDS;
  * Klasa sluzaca do zarzadzania poziomami
  * @author Lukasz Syposz
  */
-class ZarzadzaniePoziomami {
+public class ZarzadzaniePoziomami {
     /** Numer poziomu*/
     int poziom;
     /** Poziom docelowy*/
