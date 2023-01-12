@@ -1,5 +1,4 @@
 package lukkar.kwadraciaki;
-
 /**
  * Glowna klasa uruchamiajaca gre
  * @author Lukasz Syposz
