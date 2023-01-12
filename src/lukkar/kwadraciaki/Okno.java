@@ -4,30 +4,57 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import java.awt.Color;
-
+import java.time.LocalTime;
+/**
+ * Okno głowne gry
+ * @author Lukasz Syposz
+ */
 class Okno extends JFrame {
+    /** Panel w ktorym uzytkownik rysuje obrazek*/
     JPanel rysowanie;
+    /** Panel w ktorym wyswietla się wzor obrazka*/
     JPanel wzor;
+    /** Panel wyswietlajacy menu*/
     JPanel menu;
+    /** Informacja o danym poziomie gry*/
     JLabel infoPoziomu;
+    /** Informacja o grze wraz z instrukcja*/
     JTextArea infoGry;
+    /** Manager do zarzadzania poziomami*/
     ZarzadzaniePoziomami manager;
+    /** Szerokosc jednego kwadratu*/
     int kwadrat;
+    /** Maksymalna liczba kwadratow w pionie i poziomie*/
     int lkwadrat;
+    /** Szerokosc linii*/
     int linia;
+    /** Maksymalna liczba linii w pionie i poziomie*/
     int llinia;
+    /** skala obszaru ze wzorem w porownaniu z obszarem do rysowania*/
     double skalawzoru;
+    /** Maksymalna szerokosc pola do rysowania*/
     int dlrys;
+    /** Rozmiar przerwy miedzy polami w poziomie*/
     double xprzerwa;
+    /** Rozmiar przerwy miedzy polami w pionie*/
     double yprzerwa;
+    /** Rozmiar przerwy miedzy polem ze wzorem a polem menu*/
     double przerwawzormenu;
+    /** Szerokosc pola graficznego gry*/
     int x;
+    /** Wysokosc pola graficznego gry*/
     int y;
+    /** Czas*/
+    LocalTime startTime;
+
+    /**
+     *Ustalenie konkretnych wymiarow
+     */
     Okno() {
         super("Kwadraciaki");
-        int x = 1280;
-        int y = 1024;
-        this.manager = new ZarzadzaniePoziomami();
+        x = 1280;
+        y = 1024;
+        this.manager = new ZarzadzaniePoziomami(this);
         this.setSize(x, y);
         this.setResizable(false);
         this.setLayout(null);
@@ -37,7 +64,10 @@ class Okno extends JFrame {
         llinia = 13;
         skalawzoru = 0.5;
         dlrys = lkwadrat * kwadrat + llinia * linia;
+        xprzerwa = (x - dlrys * (1+skalawzoru))/3;
         yprzerwa = (y - lkwadrat * kwadrat - llinia * linia)/2;
+        przerwawzormenu = (y-dlrys*skalawzoru-2*yprzerwa)*0.02;
+        startTime = LocalTime.now();
         this.rysowanie = new Rysowanie(this);;
         this.wzor = new Wzor(this);
         this.menu = new Menu(this);
@@ -48,13 +78,15 @@ class Okno extends JFrame {
         this.menu.setLocation((int)(dlrys+2*xprzerwa), (int)(yprzerwa+dlrys*skalawzoru+przerwawzormenu));
         this.rysowanie.setSize(dlrys, dlrys);
         this.wzor.setSize((int)(dlrys*skalawzoru), (int)(dlrys*skalawzoru));
-        this.menu.setSize((int)(dlrys*skalawzoru-xprzerwa), (int)(dlrys*skalawzoru-przerwawzormenu));
-        this.infoPoziomu = new JLabel();
-        this.infoGry = new JTextArea();
-        this.infoPoziomu.setBackground(new Color(128,128,128));
-        this.infoGry.setBackground(new Color(0,0,255));
-        this.infoPoziomu.setSize((int)(dlrys/2),30);
-        this.infoGry.setSize((int)(dlrys/2),(int)(dlrys/4-przerwawzormenu));
+        this.menu.setSize((int)(dlrys*skalawzoru), (int)(dlrys*skalawzoru-przerwawzormenu));
+        this.infoPoziomu = new JLabel("Nr poziomu: 1");
+        this.infoGry = new JTextArea("Gra zawiera 10 poziomĂłw. Po przejĹ›ciu poziomu automatycznie przechodzi do nastÄ™pnego. Gdy ostatni poziom zostanie zakoĹ„czony gra zamyka siÄ™. Celem jest dopasowanie elementĂłw na polu z lewej do miniatury z prawej.");
+        this.infoPoziomu.setLocation(0,0);
+        this.infoGry.setLocation(0,30);
+        this.menu.setBackground(new Color(140,140,140));
+        this.infoGry.setBackground(new Color(135,135,135));
+        this.infoPoziomu.setSize((int)(dlrys/2/2),30);
+        this.infoGry.setSize((int)(dlrys/2),(int)(dlrys/2-przerwawzormenu-30));
         this.infoGry.setLineWrap(true);
         this.infoGry.setWrapStyleWord(true);
         this.infoGry.setEditable(false);
@@ -68,19 +100,3 @@ class Okno extends JFrame {
         this.setVisible(true);
     }
 }
-/*13 pionowych, 12 kwadratow, przerwa, 13 pionowych/2, 12 kwadratów/2 = 1280
-13 poziomych, 12 kwadratow = 1024
-kwadrat = 60*12=720
-linia -| = 2*13=26
-przerwa = ?
-- 13*2+12*60+?+(13*2+12*60)/2=1280
-- 746+?+373=1280
-y = 161
-| 746+y=1024
-y 278
-xmenu=1280-746-161=373
-ymenu=1024-y-746/2=373
-y/2
-rysowanie | wzor
-rysowanie | wzor/x+menu
-y/2*/
